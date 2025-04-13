@@ -45,7 +45,11 @@ Use the sidebar to navigate between pages.
 
 # Show dataset overview
 st.subheader("Dataset Overview")
-df = st.session_state.df
+if 'df' in st.session_state:
+    df = st.session_state.df
+else:
+    st.warning("Data belum dimuat ke session_state.")
+
 st.write(f"Number of samples: {df.shape[0]}")
 st.write(f"Number of features: {df.shape[1]}")
 st.dataframe(df.head(5))
