@@ -22,8 +22,6 @@ if 'label_columns' not in st.session_state:
 # Dataset Overview
 st.subheader("Dataset Overview")
 
-from utils.data_loader import load_data
-
 df = load_data()
 st.session_state.df = df
 
