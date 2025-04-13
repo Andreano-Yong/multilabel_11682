@@ -19,11 +19,9 @@ if 'model_name' not in st.session_state:
 if 'label_columns' not in st.session_state:
     st.session_state.label_columns = None
 
-# Dataset Overview
-st.subheader("Dataset Overview")
-
-df = load_data()
-st.session_state.df = df
+# Load data
+if 'df' not in st.session_state:
+    st.session_state.df = load_data()
 
 # Add title and description
 st.title("Automotive Reviews Multi-label Text Classification")
