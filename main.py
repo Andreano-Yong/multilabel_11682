@@ -22,14 +22,10 @@ if 'label_columns' not in st.session_state:
 # Dataset Overview
 st.subheader("Dataset Overview")
 
-if 'df' in st.session_state:
-    df = st.session_state.df
-    st.write(f"Number of samples: {df.shape[0]}")
-    st.write(f"Number of features: {df.shape[1]}")
-    st.dataframe(df.head(5))
-else:
-    st.warning("Data belum dimuat ke session_state.")
+from utils.data_loader import load_data
 
+df = load_data()
+st.session_state.df = df
 
 # Add title and description
 st.title("Automotive Reviews Multi-label Text Classification")
@@ -53,16 +49,7 @@ Use the sidebar to navigate between pages.
 # Show dataset overview
 # Dataset Overview
 st.subheader("Dataset Overview")
-
-if 'df' in st.session_state:
-    df = st.session_state.df
-    st.write(f"Number of samples: {df.shape[0]}")
-    st.write(f"Number of features: {df.shape[1]}")
-    st.dataframe(df.head(5))
-else:
-    st.warning("Data belum dimuat ke session_state.")
-
-
+df = st.session_state.df
 st.write(f"Number of samples: {df.shape[0]}")
 st.write(f"Number of features: {df.shape[1]}")
 st.dataframe(df.head(5))
